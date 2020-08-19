@@ -66,3 +66,43 @@ Route::group(['prefix'=>'themes/AdminLTE'],function(){                          
 
 
 Route::get('widgetS','theme@widgetS');               //widget page using content
+
+
+
+
+// ==============================================================================================================================
+
+
+
+
+
+Route::group(['prefix'=>'/themes/AdminLTE/'],function(){
+
+
+Route::get('first-page','TempController@firstPage')->name('first-page');         //Modified routes using new Controller TempController
+Route::get('second-page','TempController@secondPage')->name('second-page'); 
+Route::get('third-page','TempController@thirdPage')->name('third-page'); 
+
+
+Route::group(['prefix'=>'pages/'], function(){
+    Route::get('widget-page','TempController@widgetPage')->name('widget-page'); 
+
+    Route::get('table','UserController@relate')->name('table');
+
+
+});
+
+
+
+
+
+
+});
+
+
+
+Route::get('data','TempController@fetch');
+
+
+
+

@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -189,19 +191,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('first') }}" class="nav-link active">
+                <a href="{{ route('first-page') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('second') }}" class="nav-link">
+                <a href="{{ route('second-page') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('third') }}" class="nav-link">
+                <a href=" {{  route('third-page') }}  " class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
                 </a>
@@ -209,7 +211,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/widgetS" class="nav-link">
+            <a href="{{  route('widget-page') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
@@ -404,7 +406,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{ route('table') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Simple Tables</p>
                 </a>

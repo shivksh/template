@@ -2,7 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\UsersModel;
+use App\ProfilesModel;
+use App\PostsModel;
+
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,12 +20,42 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+// $factory->define(User::class, function (Faker $faker) {
+//     return [
+//         'name' => $faker->name,
+//         'email' => $faker->unique()->safeEmail,
+//         'email_verified_at' => now(),
+//         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+//         'remember_token' => Str::random(10),
+//     ];
+// });
+
+
+
+$factory->define(UsersModel::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'UserName' => $faker->name,
+        'Email' => $faker->unique()->safeEmail,
+        'Password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'Phone' => rand(9111111111,9999999999),
+
+    ];
+});
+
+
+$factory->define(ProfilesModel::class, function (Faker $faker) {
+    return [
+        'pro_id' => rand(1,50),
+        'Address' => Str::random(10),
+        'Hobbies' => Str::random(10),
+    ];
+});
+
+
+$factory->define(PostsModel::class, function (Faker $faker) {
+    return [
+        'post_id' => rand(1,50),
+        'PostTitle' => Str::random(10),
+        'PostContent' => Str::random(10),
     ];
 });
