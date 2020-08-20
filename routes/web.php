@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
-
 
 
 Route::group(['prefix'=>'themes/AdminLTE'],function(){
@@ -31,9 +30,10 @@ Route::group(['prefix'=>'themes/AdminLTE'],function(){
 
 Route::get('/widget','theme@widget');
 
+Route::post('/register-data','FormController@registerData')->name('register-data');
 
 
-
+Route::get('/','FormController@loginPage')->name('login-page');
 Route::group(['prefix'=>'themes/AdminLTE/pages/layout/'],function(){
 
     Route::get('/topNav','theme@topNav');
@@ -57,23 +57,16 @@ Route::group(['prefix'=>'themes/AdminLTE'],function(){                          
     Route::get('third','theme@thirdPage')->name('third');
 
 
-
-
-
-
-
 });
 
-
 Route::get('widgetS','theme@widgetS');               //widget page using content
-
-
 
 
 // ==============================================================================================================================
 
 
 
+Route::group(['middleware' => ['auth']], function () {
 
 
 Route::group(['prefix'=>'/themes/AdminLTE/'],function(){
@@ -87,15 +80,10 @@ Route::get('third-page','TempController@thirdPage')->name('third-page');
 Route::group(['prefix'=>'pages/'], function(){
     Route::get('widget-page','TempController@widgetPage')->name('widget-page'); 
 
-    Route::get('table','UserController@relate')->name('table');
+    Route::get('table','UserController@relate')->name('table');                   //table route using new Controller i.e UserController
 
 
 });
-
-
-
-
-
 
 });
 
@@ -105,4 +93,16 @@ Route::get('data','TempController@fetch');
 
 
 
+});
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/register-page','FormController@registerPage')->name('register-page');
+Route::post('/register-data','FormController@registerData')->name('register-data');
+
+
+Route::get('/','FormController@loginPage')->name('login-page');
+Route::post('/login-data','FormController@loginData')->name('login-data');
