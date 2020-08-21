@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class AwesomeServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+    
     }
 
     /**
@@ -23,5 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        //This share the value of key 'name' and 'property' to any view blade file.
+        view()->share('commonVariable',[
+            'name' => 'Common variable',
+            'property' => 'This property is available in all your views'
+        ]);
     }
 }

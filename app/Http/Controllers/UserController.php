@@ -12,4 +12,15 @@ class UserController extends Controller
         $users=UsersModel::all();
         return view('users.user-details',compact('users'));
     }
+
+
+  //Middleware Using Controller 
+
+ public function __construct()
+ {
+     $this->middleware('custom-middleware');    
+ }
+
+
+
 }

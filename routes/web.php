@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -74,7 +75,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['custom-middleware']], function () {                   
 //group whose prefix is '/theme/Admin'
 Route::group(['prefix'=>'/themes/Admin/'],function(){
-Route::get('first-page','TempController@firstPage')->name('first-page');         //Modified routes using new Controller TempController
+
+// Dashboard Pages 
+//Using custom-middleware on a route 
+Route::get('first-page','TempController@firstPage')->name('first-page')->middleware('custom-middleware');       //Modified routes using new Controller TempController  
 Route::get('second-page','TempController@secondPage')->name('second-page'); 
 Route::get('third-page','TempController@thirdPage')->name('third-page'); 
 
@@ -98,5 +102,7 @@ Route::post('/register-data','FormController@registerData')->name('register-data
 //View Login Page 
 Route::get('/','FormController@loginPage')->name('login-page');
 
-// Data fetching and login to nex page using loginData method in FormController
+// Data fetching and login to next page using loginData method in FormController
 Route::post('/login-data','FormController@loginData')->name('login-data');
+
+

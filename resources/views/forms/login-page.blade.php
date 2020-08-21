@@ -29,4 +29,12 @@
     </form>     
 
 
+<!-- Just Checking how the data is send to view file by Provider -->
+
+     @foreach($commonVariable as $var)
+
+      {{ $var }}         
+
+     @endforeach
+
 @endsection

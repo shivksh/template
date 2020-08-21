@@ -18,7 +18,7 @@ class CheckLogin
     {
        if(!Auth::check()){
 
-        return redirect('/register-page');
+        return redirect('/')->with('success','First Login Here');
        }
         return $next($request);
     }

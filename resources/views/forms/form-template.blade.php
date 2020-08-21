@@ -27,33 +27,28 @@
     
 <div class='container cds'  >
 
- 
+ <!-- For displaying errors in a paragraph tag -->
+  @if (count($errors)>0)
+
+    @foreach ($errors->all() as $error )
+    <p class="alert alert-danger mt-3">{{ $error }}   </p>
+    @endforeach
+  @endif
 
 
-<!-- For displaying errors in a paragraph tag -->
- @if (count($errors)>0)
+  @if(session('success'))
+  <div class="alert alert-success mt-3">
+     <p>{{ session('success') }}</p>
+  </div>
 
-   @foreach ($errors->all() as $error )
-   <p class="alert alert-danger mt-3">{{ $error }}   </p>
-   @endforeach
- @endif
-
-
- @if(session('success'))
-
-
-<div class="alert alert-success mt-3">
-   <p>{{ session('success') }}</p>
-</div>
-
- @endif
+  @endif
 
 
 
 @yield('content')
 
 
- </div>
+</div>
 
 
 </body>
