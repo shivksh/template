@@ -64,45 +64,39 @@ Route::get('widgetS','theme@widgetS');               //widget page using content
 
 // ==============================================================================================================================
 
+//Starting from Here
 
+//Laravel default 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth']], function () {
-
-
-Route::group(['prefix'=>'/themes/AdminLTE/'],function(){
-
-
+// Custom Middleware CheckLogin 
+Route::group(['middleware' => ['custom-middleware']], function () {                   
+//group whose prefix is '/theme/Admin'
+Route::group(['prefix'=>'/themes/Admin/'],function(){
 Route::get('first-page','TempController@firstPage')->name('first-page');         //Modified routes using new Controller TempController
 Route::get('second-page','TempController@secondPage')->name('second-page'); 
 Route::get('third-page','TempController@thirdPage')->name('third-page'); 
 
 
+//group inside another group whose prefix is '/theme/Admin'
 Route::group(['prefix'=>'pages/'], function(){
     Route::get('widget-page','TempController@widgetPage')->name('widget-page'); 
-
     Route::get('table','UserController@relate')->name('table');                   //table route using new Controller i.e UserController
-
-
+});
+});
 });
 
-});
 
 
-
-Route::get('data','TempController@fetch');
-
-
-
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+//View Register Page 
 Route::get('/register-page','FormController@registerPage')->name('register-page');
+
+// Data Validate and Send to database using registerData method in FormController
 Route::post('/register-data','FormController@registerData')->name('register-data');
 
-
+//View Login Page 
 Route::get('/','FormController@loginPage')->name('login-page');
+
+// Data fetching and login to nex page using loginData method in FormController
 Route::post('/login-data','FormController@loginData')->name('login-data');

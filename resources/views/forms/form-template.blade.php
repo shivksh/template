@@ -15,34 +15,32 @@
      #input{
          width:100%;
      }
-   
-   .container{
+   .cds{
     margin: 0 auto; width:20%;
 
    }
-    
 
 </style>
 
 </head>
 <body>
     
-<div class='container'  >
+<div class='container cds'  >
 
  
 
 
-
+<!-- For displaying errors in a paragraph tag -->
  @if (count($errors)>0)
 
    @foreach ($errors->all() as $error )
    <p class="alert alert-danger mt-3">{{ $error }}   </p>
-
    @endforeach
  @endif
 
 
  @if(session('success'))
+
 
 <div class="alert alert-success mt-3">
    <p>{{ session('success') }}</p>

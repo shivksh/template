@@ -25,11 +25,6 @@ class TempController extends Controller
 
 
 
-    public function fetch(){
-
-        return ProductModel::find(1)
-        ->mydata;
-
-    }
+    
 
 }
