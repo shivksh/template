@@ -22,7 +22,7 @@
          
 
          <button type="submit" class="btn btn-primary btn-sm btn-block mt-3"> Submit  </button>
-         <p class="mt-2">Not Registered Yet ? <a href="/register-page">Register Here</a> </p>
+         <p class="mt-2">Not Registered Yet ? <a href="/register-page">Register Here </p>
 
 
 
