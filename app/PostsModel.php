@@ -9,7 +9,7 @@ class PostsModel extends Model
 
     function belongPost(){
 
-        return $this-> belongsTo(UsersModel::class,'user_id','post_id');
+        return $this-> belongsTo(UsersModel::class,'id','user_id');
     }
 
 }

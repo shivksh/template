@@ -46,7 +46,7 @@
 
   @foreach($users as $user)
     <tr>
-      <td> {{  $user->user_id  }} </td>                      <!-- //hasOne Contents from user Table --> 
+      <td> {{  $user->id  }} </td>                      <!-- //hasOne Contents from user Table --> 
       <td> {{  $user->UserName  }} </td>
       <td> {{  $user->Email }} </td>
       <td> {{  $user->Phone  }} </td>

@@ -45,7 +45,7 @@ $factory->define(UsersModel::class, function (Faker $faker) {
 
 $factory->define(ProfilesModel::class, function (Faker $faker) {
     return [
-        'pro_id' => rand(1,50),
+        'user_id' => rand(1,50),
         'Address' => Str::random(10),
         'Hobbies' => Str::random(10),
     ];
@@ -54,7 +54,7 @@ $factory->define(ProfilesModel::class, function (Faker $faker) {
 
 $factory->define(PostsModel::class, function (Faker $faker) {
     return [
-        'post_id' => rand(1,50),
+        'user_id' => rand(1,50),
         'PostTitle' => Str::random(10),
         'PostContent' => Str::random(10),
     ];
