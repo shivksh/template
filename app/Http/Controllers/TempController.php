@@ -7,6 +7,14 @@ use App\ProductModel;
 
 class TempController extends Controller
 {
+
+//Middleware Using Controller 
+    public function __construct()
+    {
+    $this->middleware('custom-middleware',['only'=>['firstPage','secondPage','thirdPage','widgetPage']]);    
+    }
+
+
     public function firstPage(){
     	return view('modified.first-page');
     }
@@ -25,12 +33,7 @@ class TempController extends Controller
 
 
 
-    //Middleware Using Controller 
-
-    public function __construct()
-    {
-        $this->middleware('custom-middleware');    
-    }
+    
 
     
 

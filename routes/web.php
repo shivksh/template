@@ -74,7 +74,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Custom Middleware CheckLogin 
 Route::group(['middleware' => ['custom-middleware']], function () {                   
 //group whose prefix is '/theme/Admin'
-Route::group(['prefix'=>'/themes/Admin/'],function(){
+Route::group(['prefix'=>'admin/'],function(){
 
 // Dashboard Pages 
 //Using custom-middleware on a route 
@@ -82,13 +82,14 @@ Route::get('first-page','TempController@firstPage')->name('first-page')->middlew
 Route::get('second-page','TempController@secondPage')->name('second-page'); 
 Route::get('third-page','TempController@thirdPage')->name('third-page'); 
 
+});
 
-//group inside another group whose prefix is '/theme/Admin'
+// another group whose prefix is 'pages/'
 Route::group(['prefix'=>'pages/'], function(){
     Route::get('widget-page','TempController@widgetPage')->name('widget-page'); 
     Route::get('table','UserController@relate')->name('table');                   //table route using new Controller i.e UserController
 });
-});
+
 });
 
 
