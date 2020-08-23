@@ -47,8 +47,8 @@ class ApiController extends Controller
 
     //this method will fetch the data between a specific time period from posts_models table
     public function specificDate(){
-        $data = PostsModel::select('posts_models.*')
-        ->whereRaw('created_at',['2020-08-20','2020-08-22'])
+        $data = DB::table('posts_models')
+        ->whereBetween('created_at',['2020-08-22','2020-08-24'])
         ->get();
         return response()->json($data);
     }
