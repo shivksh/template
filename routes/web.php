@@ -90,6 +90,15 @@ Route::group(['prefix'=>'pages/'], function(){
     Route::get('table','UserController@relate')->name('table');                   //table route using new Controller i.e UserController
 });
 
+
+
+Route::group(['prefix'=>'pages/charts'],function(){
+
+    Route::get('/chart-js','ChartController@chartJs')->name('chart-js');
+    Route::get('/flot-chart','ChartController@flotChart')->name('flot-chart');
+    Route::get('/inline-chart','ChartController@inlineChart')->name('inline-chart');
+});
+
 });
 
 

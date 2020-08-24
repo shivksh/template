@@ -14,13 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 
 //this route display the function in which all data are fetching of both tables using join
-Route::get('/all-data','Api\ApiController@displayData');
+Route::get('/all-data','Api\ApiController@displayData')->middleware('custom-middleware');
 
 // this  route will dsplay the function in which specific id data is fetchimh
 Route::get('/specific-data/{id}','Api\ApiController@specificData');
@@ -36,3 +32,7 @@ Route::get('/specific-date' , 'Api\ApiController@specificDate');
 
 //this  route executing the funvton in which data is displaying on the user who have their posts
 Route::get('/only-data' , 'Api\ApiController@onlyPostData');
+
+Route::post('/insert-data' , 'Api\CrudController@insertData');
+
+Route::post('/login-data', 'Api\CrudController@loginData');

@@ -9,6 +9,12 @@ use DB;
 
 class ApiController extends Controller
 {
+    public function __construct()
+    {
+    $this->middleware('api-middleware');    
+    }
+
+
     //this method display the all data of posts_models table in a json file 
     public function displayData(){
         $data = PostsModel::all();
