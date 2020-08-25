@@ -31,9 +31,10 @@ Route::group([
 });
 
 
+// group middleware to protect multiple routes
 Route::group(['middleware' => ['jwt.auth']], function(){
 
-//this route display the function in which all data are fetching of both tables using join
+//this route display the function in which all data are fetching of both tables using join , middleware for protecting the route
 Route::get('/all-data','Api\ApiController@displayData') -> middleware('jwt.auth');
 
 

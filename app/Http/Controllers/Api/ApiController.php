@@ -41,7 +41,7 @@ class ApiController extends Controller
         $data = DB::table('posts_models')
         ->where('posts_models.id','=', $any_id)
         ->update(['postTitle' => 'NewProfile']);
-        return response()->json($data);
+        return 'Data update SuccessFully';
     }
 
     //this method delete the specific field of posts_models table using user_id i.e. id of users_models table
@@ -50,7 +50,7 @@ class ApiController extends Controller
         $data = DB::table('posts_models')
         ->where('user_id', '=',$any_id)
         ->delete();
-        return response()->json($data);
+        return 'Data Deleted SuccessFully';
     }
 
     //this method will fetch the data between a specific time period from posts_models table

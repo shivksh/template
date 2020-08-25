@@ -10,12 +10,13 @@ use Auth;
 class CrudController extends Controller
 {
  
-public function __construct(){
+    //the functions in the only field in construct function is protect by middleware
+  public function __construct(){
     $this->middleware('jwt.auth',['only' => ['insertData' , 'loginData' ]]);
 }
 
 
-    
+    //insert the data into database using the api
     public function insertData(Request $request){
         $data = new User;
         $data -> name = $request -> name;
@@ -25,6 +26,7 @@ public function __construct(){
         return 'Data Saved Successfully';
     }
 
+    //login data form the user table credential using below function and it will return success message in return when successfully executed. 
     public function loginData(Request $request){
         if(Auth::attempt(['email'=>$request->email , 'password'=>$request->password])){
             return 'Login SuccessFully, Good to see you Again';
