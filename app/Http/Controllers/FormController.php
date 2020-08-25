@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\Http\Requests\InsertValidation;
+use App\Http\Requests\LoginValidation;
+
 
 class FormController extends Controller
 {
@@ -36,7 +38,7 @@ class FormController extends Controller
 
     //this method login to redirect to next page when the credential will correct
     //these credentials should be according to InsertValidation form request
-    public function loginData(InsertValidation $request){
+    public function loginData(LoginValidation $request){
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
             return redirect()->route('first-page');
         }

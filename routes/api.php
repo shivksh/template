@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //this route display the function in which all data are fetching of both tables using join
-Route::get('/all-data','Api\ApiController@displayData')->middleware('custom-middleware');
+Route::middleware('custom-middleware')->get('/all-data','Api\ApiController@displayData');
 
 // this  route will dsplay the function in which specific id data is fetchimh
 Route::get('/specific-data/{id}','Api\ApiController@specificData');

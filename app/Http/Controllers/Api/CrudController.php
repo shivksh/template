@@ -9,7 +9,7 @@ use Auth;
 
 class CrudController extends Controller
 {
-    
+ 
     
     public function insertData(Request $request){
         $data = new User;
