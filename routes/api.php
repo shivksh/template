@@ -15,8 +15,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
+Route::group([
+
+    'prefix' => 'auth'
+
+], function () {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+    
+
+});
+
+
+Route::group(['middleware' => ['jwt.auth']], function(){
+
 //this route display the function in which all data are fetching of both tables using join
-Route::middleware('custom-middleware')->get('/all-data','Api\ApiController@displayData');
+Route::get('/all-data','Api\ApiController@displayData') -> middleware('jwt.auth');
+
 
 // this  route will dsplay the function in which specific id data is fetchimh
 Route::get('/specific-data/{id}','Api\ApiController@specificData');
@@ -36,5 +55,4 @@ Route::get('/only-data' , 'Api\ApiController@onlyPostData');
 //this route will insert the data to db table using api
 Route::post('/insert-data' , 'Api\CrudController@insertData');
 
-//this route is for login.
-Route::post('/login-data', 'Api\CrudController@loginData');
+});

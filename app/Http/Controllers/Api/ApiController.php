@@ -9,7 +9,14 @@ use DB;
 
 class ApiController extends Controller
 {
-    
+
+    //middleware applied on controller
+    public function __construct()
+    {
+    $this->middleware('jwt.auth',['only' => ['diplayData' , 'specificData' , 'updateData', 'deletePost' , 'specificDate' , 'onlyPostData']]);    
+    }
+
+
     //this method display the all data of posts_models table in a json file 
     public function displayData(){
         $data = PostsModel::all();

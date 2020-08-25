@@ -10,6 +10,11 @@ use Auth;
 class CrudController extends Controller
 {
  
+public function __construct(){
+    $this->middleware('jwt.auth',['only' => ['insertData' , 'loginData' ]]);
+}
+
+
     
     public function insertData(Request $request){
         $data = new User;
@@ -17,7 +22,7 @@ class CrudController extends Controller
         $data -> email = $request -> email;
         $data -> password = bcrypt($request -> password);
         $data -> save();
-        return response()->json($data);
+        return 'Data Saved Successfully';
     }
 
     public function loginData(Request $request){
