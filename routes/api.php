@@ -33,6 +33,8 @@ Route::get('/specific-date' , 'Api\ApiController@specificDate');
 //this  route executing the funvton in which data is displaying on the user who have their posts
 Route::get('/only-data' , 'Api\ApiController@onlyPostData');
 
+//this route will insert the data to db table using api
 Route::post('/insert-data' , 'Api\CrudController@insertData');
 
+//this route is for login.
 Route::post('/login-data', 'Api\CrudController@loginData');
