@@ -116,3 +116,6 @@ Route::get('/','FormController@loginPage')->name('login-page');
 Route::post('/login-data','FormController@loginData')->name('login-data');
 
 
+Route::get('pdf' ,function(){
+    return view('pdf');
+});

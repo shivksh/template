@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PostsModel;
+use App\UsersModel;
 use DB;
+use PDF;
+use Mail;
 
 class ApiController extends Controller
 {
@@ -70,4 +73,30 @@ class ApiController extends Controller
         ->get();
         return response()->json($data);
     }
+
+    //this method fetching the data from the table within a specific date and of a specific user 
+    //this data will be send to a blade file pdf.pdf-api 
+    //after generating pdf Mail function send this to the users mail. 
+    public function postToUser($random){
+        $user = DB::table('posts_models')
+        ->join('users_models' , 'posts_models.user_id' , '=' , 'users_models.id')
+        ->select('posts_models.user_id', 'users_models.UserName','users_models.Email', 'users_models.Phone' ,'posts_models.PostTitle' , 'posts_models.PostContent' ) 
+        ->where( 'posts_models.user_id' , '=', $random )
+        ->whereBetween('posts_models.created_at',['2020-08-22' , '2020-08-25'])
+        ->get();
+        $pdf = PDF::loadView('pdf.pdf-api',compact('user'));
+        $detail = UsersModel::find($random);
+        $data['email'] = $detail->Email;
+        $data['name'] = $detail->UserName;
+        $data['subject'] = 'Checking Mail' ;
+        
+        //Mail calss is here sending pdf as a mail to the given email.
+        Mail::send('pdf.pdf-api',$data,function($message) use ($data,$pdf){
+            $message -> to($data['email'],$data['name'])
+            ->subject( $data['subject'] )
+            ->attachData($pdf -> output() , 'details.pdf');
+              
+        });
+    }
+    
 }

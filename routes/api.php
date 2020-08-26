@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
 
-    'prefix' => 'auth'
+    'prefix' => 'auth',
+    'middleware' => 'api'
 
 ], function () {
 
@@ -57,3 +58,7 @@ Route::get('/only-data' , 'Api\ApiController@onlyPostData');
 Route::post('/insert-data' , 'Api\CrudController@insertData');
 
 });
+
+//this route will fetch the data and generate pdf and after that this will directly send to mail 
+//of the user whose id we are passing here.
+Route::get('/post-to-user/{id}' , 'Api\ApiController@postToUser');
