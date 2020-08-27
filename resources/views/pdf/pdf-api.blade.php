@@ -24,7 +24,7 @@ loadView function -->
       <td>{{ $d -> Phone }}</td>
       <td>{{ $d -> PostTitle }}</td>
       <td>{{ $d -> PostContent }}</td>
-    </tr>
+    </tr> 
     @endforeach
 
   </tbody>

@@ -84,19 +84,22 @@ class ApiController extends Controller
         ->where( 'posts_models.user_id' , '=', $random )
         ->whereBetween('posts_models.created_at',['2020-08-22' , '2020-08-25'])
         ->get();
+
+        
         $pdf = PDF::loadView('pdf.pdf-api',compact('user'));
         $detail = UsersModel::find($random);
         $data['email'] = $detail->Email;
         $data['name'] = $detail->UserName;
         $data['subject'] = 'Checking Mail' ;
-        
+
+
         //Mail calss is here sending pdf as a mail to the given email.
-        Mail::send('pdf.pdf-api',$data,function($message) use ($data,$pdf){
+        Mail::send('emails.pdf-mail-body',$data,function($message) use ($data,$pdf){
             $message -> to($data['email'],$data['name'])
             ->subject( $data['subject'] )
             ->attachData($pdf -> output() , 'details.pdf');
-              
         });
+
     }
     
 }
